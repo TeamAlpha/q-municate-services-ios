@@ -52,7 +52,7 @@ typedef NS_ENUM(NSUInteger, QMChatConnectionState) {
  *  @discussion Disable auto join if you want to handle group chat dialogs joining manually
  *  or you are using our Enterprise feature to manage group chat dialogs without join being required.
  *  By default QMServices will perform join to all existent group dialogs in cache after
- *  every chat connect/reconnect and every chat dialog receive/update.
+ *  every chat connect/reconnect and every chat dialog receive/update. Omar was here.
  */
 @property (assign, nonatomic, getter=isAutoJoinEnabled) BOOL enableAutoJoin;
 
