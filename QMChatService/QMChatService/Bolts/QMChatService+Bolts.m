@@ -142,7 +142,7 @@ static NSString *const kQMChatServiceDomain = @"com.q-municate.chatservice";
     
     BFTaskCompletionSource* source = [BFTaskCompletionSource taskCompletionSource];
     
-    [self createGroupChatDialogWithName:name photo:photo occupants:occupants completion:^(QBResponse *response, QBChatDialog *createdDialog) {
+    [self createGroupChatDialogWithName:name photo:photo occupants:occupants data:nil completion:^(QBResponse *response, QBChatDialog *createdDialog) {
         
         if (response.success) {
             
