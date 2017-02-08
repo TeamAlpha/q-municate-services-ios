@@ -782,7 +782,7 @@ static NSString* const kQMChatServiceDomain = @"com.q-municate.chatservice";
     [self createPrivateChatDialogWithOpponentID:opponent.ID completion:completion];
 }
 
-- (void)createGroupChatDialogWithName:(NSString *)name photo:(NSString *)photo occupants:(NSArray *)occupants
+- (void)createGroupChatDialogWithName:(NSString *)name photo:(NSString *)photo occupants:(NSArray *)occupants data:(NSDictionary QB_GENERIC(NSString *, id) *)data
                            completion:(void(^)(QBResponse *response, QBChatDialog *createdDialog))completion {
     
     NSMutableSet *occupantIDs = [NSMutableSet set];
@@ -796,6 +796,7 @@ static NSString* const kQMChatServiceDomain = @"com.q-municate.chatservice";
     chatDialog.name = name;
     chatDialog.photo = photo;
     chatDialog.occupantIDs = occupantIDs.allObjects;
+    chatDialog.data = data;
     
     __weak __typeof(self)weakSelf = self;
     [QBRequest createDialog:chatDialog successBlock:^(QBResponse *response, QBChatDialog *createdDialog) {

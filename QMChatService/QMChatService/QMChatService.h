@@ -52,7 +52,7 @@ typedef NS_ENUM(NSUInteger, QMChatConnectionState) {
  *  @discussion Disable auto join if you want to handle group chat dialogs joining manually
  *  or you are using our Enterprise feature to manage group chat dialogs without join being required.
  *  By default QMServices will perform join to all existent group dialogs in cache after
- *  every chat connect/reconnect and every chat dialog receive/update. Omar was here.
+ *  every chat connect/reconnect and every chat dialog receive/update.
  */
 @property (assign, nonatomic, getter=isAutoJoinEnabled) BOOL enableAutoJoin;
 
@@ -160,7 +160,7 @@ typedef NS_ENUM(NSUInteger, QMChatConnectionState) {
  *  @param occupants  QBUUser collection
  *  @param completion Block with response and created chat dialog instances
  */
-- (void)createGroupChatDialogWithName:(nullable NSString *)name photo:(nullable NSString *)photo occupants:(NSArray QB_GENERIC(QBUUser *) *)occupants completion:(nullable void(^)(QBResponse *response, QBChatDialog * _Nullable createdDialog))completion;
+- (void)createGroupChatDialogWithName:(nullable NSString *)name photo:(nullable NSString *)photo occupants:(NSArray QB_GENERIC(QBUUser *) *)occupants data:(NSDictionary QB_GENERIC(NSString *, id) *)data completion:(nullable void(^)(QBResponse *response, QBChatDialog * _Nullable createdDialog))completion;
 
 /**
  *  Create p2p dialog
