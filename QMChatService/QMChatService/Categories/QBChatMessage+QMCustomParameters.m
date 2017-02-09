@@ -29,6 +29,7 @@ static NSString * const kQMLocationLongitudeKey = @"lng";
 NSString const *kQMCustomParameterDialogID = @"dialog_id";
 NSString const *kQMCustomParameterDialogRoomName = @"room_name";
 NSString const *kQMCustomParameterDialogRoomPhoto = @"room_photo";
+NSString const *kQMCustomParameterDialogData = @"dialog_data";
 NSString const *kQMCustomParameterDialogRoomLastMessageDate = @"room_last_message_date";
 NSString const *kQMCustomParameterDialogUpdatedDate = @"dialog_updated_date";
 NSString const *kQMCustomParameterDialogType = @"type";
@@ -102,7 +103,8 @@ NSString const *kQMCustomParameterDialogDeletedOccupantsIDs = @"deleted_occupant
         //Grap custom parameters;
         self.tDialog.name = self.context[kQMCustomParameterDialogRoomName];
         self.tDialog.photo = self.context[kQMCustomParameterDialogRoomPhoto];
-        
+        self.tDialog.data = self.context[kQMCustomParameterDialogData];
+
         NSString *updatedAtTimeInterval = self.context[kQMCustomParameterDialogRoomUpdatedDate];
         
         if (updatedAtTimeInterval) {
@@ -169,6 +171,9 @@ NSString const *kQMCustomParameterDialogDeletedOccupantsIDs = @"deleted_occupant
         if (dialog.name != nil) {
             
             self.context[kQMCustomParameterDialogRoomName] = dialog.name;
+        }
+        if (dialog.data != nil) {
+            self.context[kQMCustomParameterDialogData] = dialog.data;
         }
         
         NSString *strIDs = [dialog.occupantIDs componentsJoinedByString:@","];
