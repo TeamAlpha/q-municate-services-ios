@@ -335,18 +335,9 @@ static NSString* const kQMChatServiceDomain = @"com.q-municate.chatservice";
         dialogToAdd.updatedAt = message.dateSent;
         
         __weak __typeof(self)weakSelf = self;
-        [self.dialogsMemoryStorage addChatDialog:dialogToAdd andJoin:self.isAutoJoinEnabled completion:^(QBChatDialog *addedDialog, NSError *error) {
-            __typeof(weakSelf)strongSelf = weakSelf;
+        [self allDialogsWithPageLimit:100 extendedRequest:nil iterationBlock:^(QBResponse * _Nonnull response, NSArray<QBChatDialog *> * _Nullable dialogObjects, NSSet<NSNumber *> * _Nullable dialogsUsersIDs, BOOL * _Nonnull stop) {
+        } completion:^(QBResponse * _Nonnull response) {
             
-            if (message.senderID != strongSelf.serviceManager.currentUser.ID) {
-                
-                addedDialog.unreadMessagesCount++;
-            }
-            
-            if ([strongSelf.multicastDelegate respondsToSelector:@selector(chatService:didAddChatDialogToMemoryStorage:)]) {
-                
-                [strongSelf.multicastDelegate chatService:strongSelf didAddChatDialogToMemoryStorage:addedDialog];
-            }
         }];
     }
 }
