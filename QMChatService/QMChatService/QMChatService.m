@@ -325,7 +325,10 @@ static NSString* const kQMChatServiceDomain = @"com.q-municate.chatservice";
     if (message.messageType == QMMessageTypeCreateGroupDialog) {
         
         if ([self.dialogsMemoryStorage chatDialogWithID:message.dialogID] != nil) {
+            [self allDialogsWithPageLimit:100 extendedRequest:nil iterationBlock:^(QBResponse * _Nonnull response, NSArray<QBChatDialog *> * _Nullable dialogObjects, NSSet<NSNumber *> * _Nullable dialogsUsersIDs, BOOL * _Nonnull stop) {
+            } completion:^(QBResponse * _Nonnull response) {
             
+            }];    
             return;
         }
         
@@ -337,7 +340,7 @@ static NSString* const kQMChatServiceDomain = @"com.q-municate.chatservice";
         __weak __typeof(self)weakSelf = self;
         [self allDialogsWithPageLimit:100 extendedRequest:nil iterationBlock:^(QBResponse * _Nonnull response, NSArray<QBChatDialog *> * _Nullable dialogObjects, NSSet<NSNumber *> * _Nullable dialogsUsersIDs, BOOL * _Nonnull stop) {
         } completion:^(QBResponse * _Nonnull response) {
-            
+
         }];
     }
 }
